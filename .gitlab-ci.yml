@@ -2,16 +2,20 @@ stage:
   - build
   - test
 
-buid:
-  stage: build
-  image: python:3.11
-  script:
-    - python --version
-    - pip install -r requirements.txt
+variables:
+  IMAGE_NAME: devops-trainee-lab
 
-test:
+test_python:
   stage: test
   image: python:3.11
   script:
-    - pip install -r requirements.txt
-    - python -c "print('Tests passed')"
+    - python scripts/main.py
+
+build_docker:
+  stage: build
+  image: docker:24
+  services:
+    - docker:24-dind
+  script:
+    - docker build -t $IMAGE_NAME
+
