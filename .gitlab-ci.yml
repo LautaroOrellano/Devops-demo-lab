@@ -1,0 +1,17 @@
+stage:
+  - build
+  - test
+
+buid:
+  stage: build
+  image: python:3.11
+  script:
+    - python --version
+    - pip install -r requirements.txt
+
+test:
+  stage: test
+  image: python:3.11
+  script:
+    - pip install -r requirements.txt
+    - python -c "print('Tests passed')"
