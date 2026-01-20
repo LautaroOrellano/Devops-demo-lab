@@ -22,3 +22,5 @@ build_docker:
   script:
     - docker build -t $IMAGE_NAME .
 
+
+#CI validated
