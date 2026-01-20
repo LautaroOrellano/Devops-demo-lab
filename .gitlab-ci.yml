@@ -1,6 +1,6 @@
 stage:
-  - build
   - test
+  - build
 
 variables:
   IMAGE_NAME: devops-trainee-lab
@@ -9,6 +9,7 @@ test_python:
   stage: test
   image: python:3.11
   script:
+    - pip install -r requirements.txt
     - python scripts/main.py
 
 build_docker:
@@ -16,6 +17,8 @@ build_docker:
   image: docker:24
   services:
     - docker:24-dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
   script:
-    - docker build -t $IMAGE_NAME
+    - docker build -t $IMAGE_NAME .
 
