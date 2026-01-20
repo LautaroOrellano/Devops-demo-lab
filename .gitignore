@@ -1,6 +1,8 @@
 # Python
+.idea/
 .venv/
 __pycache__/
+*.pyc
 
 # Terraform
 .terraform/
